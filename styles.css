@@ -2,10 +2,12 @@ body {
   font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
     'Arial', sans-serif;
   line-height: 1.4rem;
-  padding: 0 1rem 1rem 1rem;
-  max-width: 680px;
-  margin: 0 auto;
-  color: #333;
+  color: #fff;
+  background-color: #1c1c1c;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  height: 100vh;
 }
 
 h1 {
