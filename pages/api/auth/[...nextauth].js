@@ -2,38 +2,15 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 const options = {
-  // @link https://next-auth.js.org/configuration/providers
   providers: [
-    Providers.Email({
-      // SMTP connection string or nodemailer configuration object https://nodemailer.com/
-      server: process.env.NEXTAUTH_EMAIL_SERVER,
-      // Email services often only allow sending email from a valid/verified address
-      from: process.env.NEXTAUTH_EMAIL_FROM,
-    }),
-    // When configuring oAuth providers make sure you enabling requesting
-    // permission to get the users email address (required to sign in)
     Providers.Google({
       clientId: process.env.NEXTAUTH_GOOGLE_ID,
       clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
     }),
-    Providers.Facebook({
-      clientId: process.env.NEXTAUTH_FACEBOOK_ID,
-      clientSecret: process.env.NEXTAUTH_FACEBOOK_SECRET,
-    }),
-    Providers.Twitter({
-      clientId: process.env.NEXTAUTH_TWITTER_ID,
-      clientSecret: process.env.NEXTAUTH_TWITTER_SECRET,
-    }),
-    Providers.GitHub({
-      clientId: process.env.NEXTAUTH_GITHUB_ID,
-      clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
-    }),
   ],
 
-  // @link https://next-auth.js.org/configuration/databases
   database: process.env.NEXTAUTH_DATABASE_URL,
 
-  // @link https://next-auth.js.org/configuration/options#session
   session: {
     // Use JSON Web Tokens for session instead of database sessions.
     // This option can be used with or without a database for users/accounts.
@@ -47,7 +24,6 @@ const options = {
     // updateAge: 24 * 60 * 60, // 24 hours
   },
 
-  // @link https://next-auth.js.org/configuration/options#jwt
   jwt: {
     // A secret to use for key generation - you should set this explicitly
     // Defaults to NextAuth.js secret if not explicitly specified.
@@ -60,7 +36,6 @@ const options = {
     // decode: async ({ secret, token, maxAge }) => {},
   },
 
-  // @link https://next-auth.js.org/configuration/callbacks
   callbacks: {
     /**
      * Intercept signIn request and return true if the user is allowed.
@@ -105,9 +80,6 @@ const options = {
     },
   },
 
-  // You can define custom pages to override the built-in pages
-  // The routes shown here are the default URLs that will be used.
-  // @link https://next-auth.js.org/configuration/pages
   pages: {
     //signIn: '/api/auth/signin',
     //signOut: '/api/auth/signout',
@@ -115,10 +87,6 @@ const options = {
     //verifyRequest: '/api/auth/verify-request', // (used for check email message)
     //newUser: null // If set, new users will be directed here on first sign in
   },
-
-  // Additional options
-  // secret: 'abcdef123456789' // Recommended (but auto-generated if not specified)
-  // debug: true, // Use this option to enable debug messages in the console
 }
 
 const Auth = (req, res) => NextAuth(req, res, options)

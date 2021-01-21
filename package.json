@@ -1,6 +1,8 @@
 {
-  "name": "with-next-auth",
+  "name": "event-portal",
+  "author": "divyaprakashrx",
   "version": "1.0.0",
+  "licenses": "Robotics Club NITP, All Rights Reserved",
   "scripts": {
     "dev": "next",
     "build": "next build",
