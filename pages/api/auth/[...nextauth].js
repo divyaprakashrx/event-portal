@@ -12,28 +12,11 @@ const options = {
   database: process.env.NEXTAUTH_DATABASE_URL,
 
   session: {
-    // Use JSON Web Tokens for session instead of database sessions.
-    // This option can be used with or without a database for users/accounts.
-    // Note: `jwt` is automatically set to `true` if no database is specified.
-    // jwt: true,
-    // Seconds - How long until an idle session expires and is no longer valid.
-    // maxAge: 30 * 24 * 60 * 60, // 30 days
-    // Seconds - Throttle how frequently to write to database to extend a session.
-    // Use it to limit write operations. Set to 0 to always update the database.
-    // Note: This option is ignored if using JSON Web Tokens
-    // updateAge: 24 * 60 * 60, // 24 hours
+    jwt: true,
   },
 
   jwt: {
-    // A secret to use for key generation - you should set this explicitly
-    // Defaults to NextAuth.js secret if not explicitly specified.
-    // secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
-    // Set to true to use encryption. Defaults to false (signing only).
-    // encryption: true,
-    // You can define your own encode/decode functions for signing and encryption
-    // if you want to override the default behaviour.
-    // encode: async ({ secret, token, maxAge }) => {},
-    // decode: async ({ secret, token, maxAge }) => {},
+    secret: process.env.JWT_SECRET,
   },
 
   callbacks: {
@@ -48,7 +31,7 @@ const options = {
      *                           Return `false` to deny access
      */
     signIn: async (user, account, profile) => {
-      return true
+      return true;
     },
 
     /**
@@ -60,7 +43,7 @@ const options = {
      */
     session: async (session, user) => {
       //session.customSessionProperty = 'bar'
-      return Promise.resolve(session)
+      return Promise.resolve(session);
     },
 
     /**
@@ -76,7 +59,7 @@ const options = {
       //const isSignIn = (user) ? true : false
       // Add auth_time to token on signin in
       //if (isSignIn) { token.auth_time = Math.floor(Date.now() / 1000) }
-      return Promise.resolve(token)
+      return Promise.resolve(token);
     },
   },
 
@@ -87,7 +70,7 @@ const options = {
     //verifyRequest: '/api/auth/verify-request', // (used for check email message)
     //newUser: null // If set, new users will be directed here on first sign in
   },
-}
+};
 
 const Auth = (req, res) => NextAuth(req, res, options)
 

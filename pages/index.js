@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 import styled, { keyframes } from "styled-components";
@@ -46,6 +47,10 @@ const Wrap = styled.div`
 const NextAuth = () => {
   return (
     <>
+      <Head>
+        <title>Robotics Event Portal</title>
+      </Head>
+
       <Wrap>
         <Nav />
         <div className="content">

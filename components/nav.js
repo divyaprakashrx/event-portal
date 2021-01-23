@@ -1,4 +1,4 @@
-import { signin, signout, useSession } from 'next-auth/client'
+import { signin, signout, useSession,signOut } from 'next-auth/client'
 import styles from './nav.module.css'
 
 /**
@@ -25,8 +25,8 @@ const Nav = () => {
             <a
               href={`/api/auth/signin`}
               onClick={(e) => {
-                e.preventDefault()
-                signin()
+                e.preventDefault();
+                signin();
               }}
             >
               <button className={styles.signinButton}>Sign in</button>
@@ -45,17 +45,19 @@ const Nav = () => {
             <a
               href={`/api/auth/signout`}
               onClick={(e) => {
-                e.preventDefault()
-                signout()
+                e.preventDefault();
+                signout();
               }}
             >
-              <button className={styles.signoutButton}>Sign out</button>
+              <button className={styles.signoutButton} onSelect={signOut}>
+                Sign out
+              </button>
             </a>
           </>
         )}
       </p>
     </nav>
-  )
+  );
 }
 
 export default Nav

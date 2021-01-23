@@ -2,21 +2,21 @@
   "name": "event-portal",
   "author": "divyaprakashrx",
   "version": "1.0.0",
-  "licenses": "Robotics Club NITP, All Rights Reserved",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
-  "license": "MIT",
+  "license": "Robotics Club NITP, All Rights Reserved",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/styles": "^4.11.2",
     "next": "latest",
     "next-auth": "^3.1.0",
+    "next-connect": "^0.9.1",
+    "prettier": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sqlite3": "^5.0.0",
     "styled-components": "^5.2.1"
   }
 }
